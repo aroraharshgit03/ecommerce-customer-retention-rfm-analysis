@@ -1,0 +1,28 @@
+# E-Commerce Customer Retention & RFM Segmentation Analysis (SQL + Python)
+
+## Business Problem
+An e-commerce marketplace with ~96,470 delivered orders faces low repeat-purchase behavior. The goal of this project is to quantify customer retention, segment buyers using **RFM (Recency, Frequency, Monetary)** modeling, and identify operational drivers (such as late deliveries) that prevent second purchases.
+
+## Tech Stack
+* **SQL (SQLite):** Multi-table `INNER JOIN`s, CTEs (`WITH`), Window Functions (`NTILE(4)`), date calculations (`JULIANDAY`), and `CASE WHEN` segmentation.
+* **Python:** `pandas` for data cleaning/pipeline automation, `matplotlib` & `seaborn` for data visualization.
+
+## Key Findings
+1. **Severe One-Time Buyer Drop-Off:** Roughly **97%** of customers only ever placed a single order, meaning customer acquisition is driving growth rather than retention.
+2. **High-Value Recent Newcomers:** Around **11–12%** of buyers fall into the *Recent High-Value Newcomers* segment (single order, high spend, purchased recently)—representing the highest-ROI target for immediate retention campaigns.
+3. **Delivery Speed Impacts Retention:** Customers who experienced a **late first delivery** showed a noticeably lower repeat purchase rate compared to customers whose orders arrived on time or early.
+
+## Visual Highlights
+### 1. Monthly Gross Revenue Trend
+![Monthly Revenue Trend](chart1_monthly_revenue.png)
+
+### 2. RFM Customer Segmentation
+![RFM Segments](chart2_rfm_segments.png)
+
+### 3. Impact of Delivery Speed on Repeat Purchases
+![Delivery vs Retention](chart3_delivery_vs_retention.png)
+
+## Actionable Recommendations
+1. **Target "Recent High-Value Newcomers" within 15–21 Days:** Trigger an automated post-delivery discount voucher (10–15% off second order) for recent high-spend first-time buyers before they drift into the *Hibernating* tier.
+2. **Win-Back Campaign for "At-Risk Loyalists":** Send personalized re-engagement offers to customers who previously placed 2+ orders but have not purchased in 180+ days.
+3. **Logistics SLA Alerts:** Flag orders at risk of missing their estimated delivery date in top revenue states (like SP, RJ, MG) and proactively notify buyers to protect post-purchase satisfaction.
